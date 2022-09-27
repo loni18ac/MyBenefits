@@ -1,3 +1,126 @@
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Button} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import SignUpForm from './components/SignUpForm'
+import LoginForm from './components/LoginForm'
+import {findFocusedRoute, NavigationContainer} from '@react-navigation/native'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import {createStackNavigator} from '@react-navigation/stack'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+//import firebase from 'firebase';
+import { initializeApp } from "firebase/app";
+import firebase from "firebase/compat";
+import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import Mainpage from './components/MainPage'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native'
+
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAFxWs3e3TkA4XCyNLJoLRse7x-cnkT8co",
+  authDomain: "app-inno.firebaseapp.com",
+  projectId: "app-inno",
+  storageBucket: "app-inno.appspot.com",
+  messagingSenderId: "748177715527",
+  appId: "1:748177715527:web:466f7950e4391d6f751c62"
+};
+
+const Stack = createNativeStackNavigator();
+
+
+//Stacknavi virker ikke skal bruges til signup siden
+/*const MyStack = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Start"
+          component={App}
+          options={{ title: 'Welcome' }}
+        />
+        <Stack.Screen name="SignUpForm" component={SignUpForm} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+*/
+
+
+
+export default function App({navigation}) {
+
+    //Her oprettes bruger state variblen
+    const [user, setUser] = useState({ loggedIn: false });
+
+    //Koden sikrer at kun én Firebase initieres under brug af appen.
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+        }
+
+    //onAuthstatechanged er en prædefineret metode, forsynet af firebase, som konstant observerer brugerens status (logget ind vs logget ud)
+    //Pba. brugerens status foretages et callback i form af setUSer metoden, som håndterer user-state variablens status.
+        function onAuthStateChange(callback) {
+            return firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                callback({loggedIn: true, user: user});
+            } else {
+                callback({loggedIn: false}
+
+                );
+            }
+        });
+    }
+
+  //Heri aktiverer vi vores listener i form af onAuthStateChanged, så vi dynamisk observerer om brugeren er aktiv eller ej.
+  useEffect(() => {
+    const unsubscribe = onAuthStateChange(setUser);
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+
+
+  
+  const GuestPage = () => {
+    return(
+        <View style={styles.container}>
+          <Text style={styles.paragraph}>
+            Opret eller Login
+          </Text>
+
+    
+            <LoginForm />
+
+        
+
+            <SignUpForm/>
+          
+        </View>
+
+    )
+  }
+
+  return user.loggedIn ? <Mainpage/> : <GuestPage/> ;
+
+
+    
+};
+
+
+const styles = StyleSheet.create({
+  container: {
+      flex: 1,
+      backgroundColor: '#ffff',
+      salignItems: 'center',
+      justifyContent: 'center',
+  },
+  paragraph:{
+
+  }
+});
+
 /*import React, {useEffect, useState} from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import SignUpForm from './components/SignUpForm';
@@ -90,6 +213,7 @@ const styles = StyleSheet.create({
 });
 
 */
+/*
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from "./components/HomeScreen";
@@ -159,7 +283,7 @@ const firebaseConfig = {
   messagingSenderId: "748177715527",
   appId: "1:748177715527:web:466f7950e4391d6f751c62"
 };
-*/
+
 function App() {
   return (
       <NavigationContainer>
@@ -211,4 +335,4 @@ function App() {
 }
 
 export default App
-      
+      */

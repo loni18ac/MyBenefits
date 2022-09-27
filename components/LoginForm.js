@@ -1,7 +1,6 @@
-import React, { useState} from 'react';
-import {
-    Button,
-    Text,
+
+import React, {useState, useEffect} from 'react';
+import {Button,Text,
     View,
     TextInput,
     ActivityIndicator,
@@ -10,8 +9,10 @@ import {
 //import firebase from 'firebase';
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-function LoginForm() {
+
+  function LoginForm() {
 
     //Instantiering af statevariabler, der skal benyttes i LoginForm
     const [email, setEmail] = useState('')
