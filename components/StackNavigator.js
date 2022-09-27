@@ -1,6 +1,6 @@
 import * as React from "react";
-import ScreenOne from "./stackComponents/screenOne";
-import ScreenTwo from "./stackComponents/screenTwo";
+import ScreenOne from "./navComponents/screenOne";
+import ScreenTwo from "./navComponents/screenTwo";
 import DetailsScreen from "./DetailsScreen";
 import { createStackNavigator } from '@react-navigation/stack';
 

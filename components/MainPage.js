@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import HomeScreen from './stackComponents/HomeScreen';
-import SettingsScreenComponent from './stackComponents/SettingsScreen';
+import HomeScreen from './navComponents/HomeScreen';
+import SettingsScreenComponent from './navComponents/SettingsScreen';
 import ProfileScreen from './ProfileScreen'
 //import MapComponent from './stackComponents/MapComponent'
 

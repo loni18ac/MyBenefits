@@ -7,9 +7,7 @@ import {Button,Text,
     StyleSheet,
 } from 'react-native';
 //import firebase from 'firebase';
-import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
   function LoginForm() {
