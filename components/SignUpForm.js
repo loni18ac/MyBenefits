@@ -1,24 +1,19 @@
 
 import React, {useState} from 'react';
-import {Button,Text,
+import {Button,
+    Text,
     View,
     TextInput,
-    ActivityIndicator,
     StyleSheet
 } from 'react-native';
 //import firebase from 'firebase';
-import FIRMS from '../const'
-import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
-import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
-import SelectList from 'react-native-dropdown-select-list';
 
 //Sign Up form component
 export default function SignUpForm  (props)  {
     const [email, setEmail] = useState('')
     const [firstName, setFirstName] = useState('')
     const [surname, setSurname] = useState('')
-    const [firm, setFirm] = useState('')
     const [password, setPassword] = useState('')
     const [isCompleted, setCompleted] = useState(false)
     const [errorMessage, setErrorMessage] = useState(null)
@@ -30,7 +25,7 @@ export default function SignUpForm  (props)  {
 
     const handleSubmit = async() => {
         try {
-            await firebase.auth().createUserWithEmailAndPassword(firstName, surname, email, firm, password).then((data)=>{
+            await firebase.auth().createUserWithEmailAndPassword(firstName, surname, email, password).then((data)=>{
             });
         } catch (error){
             setErrorMessage(error.message)
@@ -60,7 +55,6 @@ export default function SignUpForm  (props)  {
                         onChangeText={(email) => setEmail(email)}
                         style={styles.inputField}
                     />
-                    <SelectList setSelected={setSelected} data={FIRMS} onSelect={() => alert(selected)} />
                     <TextInput
                         placeholder="password"
                         value={password}
@@ -94,6 +88,6 @@ const styles = StyleSheet.create({
 
     },
     header: {
-        fontSize: 40,
+        fontSize: 20,
     },
 });

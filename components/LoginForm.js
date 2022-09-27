@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     header: {
-        fontSize: 40,
+        fontSize: 20,
     },
 });
 

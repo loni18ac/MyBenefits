@@ -26,7 +26,7 @@ const firebaseConfig = {
   appId: "1:748177715527:web:466f7950e4391d6f751c62"
 };
 
-const Stack = createNativeStackNavigator();
+//const Stack = createNativeStackNavigator();
 
 
 //Stacknavi virker ikke skal bruges til signup siden
@@ -48,7 +48,7 @@ const Stack = createNativeStackNavigator();
 
 
 
-export default function App({navigation}) {
+export default function App() {
 
     //Her oprettes bruger state variblen
     const [user, setUser] = useState({ loggedIn: false });
@@ -86,8 +86,8 @@ export default function App({navigation}) {
   const GuestPage = () => {
     return(
         <View style={styles.container}>
-          <Text style={styles.paragraph}>
-            Opret eller Login
+          <Text style={styles.header}>
+            Perky
           </Text>
 
     
@@ -101,7 +101,7 @@ export default function App({navigation}) {
 
     )
   }
-
+//hvis user er logget ind, returner main page, hvis ikke så 
   return user.loggedIn ? <Mainpage/> : <GuestPage/> ;
 
 
@@ -112,12 +112,19 @@ export default function App({navigation}) {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      backgroundColor: '#ffff',
+      backgroundColor: '#D7E5F0',
       salignItems: 'center',
       justifyContent: 'center',
   },
   paragraph:{
-
+    
+  },
+  header: {
+      fontSize: 50,
+      fontFamily: "Cochin",
+      fontWeight: "bold",
+      textAlign: 'center',
+      marginTop: 15
   }
 });
 
