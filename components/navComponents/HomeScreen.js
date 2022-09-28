@@ -4,25 +4,21 @@ import { BENEFITS} from "../../const";
 import Perkyhome from '../../assets/Perkyhome.png';
 
 
-const ArrayListComponent = () => {
+const HomeScreenComponent = () => {
 
     return(
         <View style={styles.container}>
-            <Image source={Perkyhome} style={{ width: 315, height: 500 }} />
-            {/* Title med styling*/ }
-
+            <Image source={Perkyhome} style={{ width: 325, height: 520 }} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         alignItems: 'center',
         justifyContent: 'center',
     }
 });
 
-
-
-export default ArrayListComponent;
+export default HomeScreenComponent;

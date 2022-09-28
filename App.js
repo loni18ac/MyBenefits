@@ -1,20 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
+
+//-------------------------------------- GK1
 import { StyleSheet, Text, View, Button} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
-import {findFocusedRoute, NavigationContainer} from '@react-navigation/native'
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {createStackNavigator} from '@react-navigation/stack'
-import Ionicons from 'react-native-vector-icons/Ionicons';
 //import firebase from 'firebase';
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
-import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 import Mainpage from './components/MainPage'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native'
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -25,28 +18,6 @@ const firebaseConfig = {
   messagingSenderId: "748177715527",
   appId: "1:748177715527:web:466f7950e4391d6f751c62"
 };
-
-//const Stack = createNativeStackNavigator();
-
-
-//Stacknavi virker ikke skal bruges til signup siden
-/*const MyStack = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Start"
-          component={App}
-          options={{ title: 'Welcome' }}
-        />
-        <Stack.Screen name="SignUpForm" component={SignUpForm} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
-*/
-
-
 
 export default function App() {
 
@@ -127,7 +98,7 @@ const styles = StyleSheet.create({
       marginTop: 15
   }
 });
-
+//---------------------------------------------------------------------
 /*import React, {useEffect, useState} from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import SignUpForm from './components/SignUpForm';
