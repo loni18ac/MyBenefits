@@ -1,28 +1,25 @@
 
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Button,Text,
     View,
     TextInput,
-    ActivityIndicator,
     StyleSheet,
 } from 'react-native';
-//import firebase from 'firebase';
 import firebase from "firebase/compat";
 
 
   function LoginForm() {
 
-    //Instantiering af statevariabler, der skal benyttes i LoginForm
+    // Deklarerer ny state variable, som vi kalder email, password og errorMessage
+    //Vi bruge useState, som er et Hook, der lader os tilføje React state til funktionskomponenter.
+    // vi kan dermed bevare værdierne imellem funktionernes kørsel
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isCompleted, setCompleted] = useState(false)
     const [errorMessage, setErrorMessage] = useState(null)
 
-    /*
-    * Metoden herunder håndterer login af en eksisterende bruger ved at anvende den prædefinerede metode, som stilles til rådighed af firebase
-    * signInWithEmailAndPassword tager en mail og et password med som argumenter og foretager et asynkront kald, der eksekverer login i firebase
-    * Opstår der fejl under forsøget på login, vil der i catch blive fremsat en fejlbesked, som, ved brug af
-    * setErrorMessage, angiver værdien for state-variablen, errormessage
+    /*Promise håndterer login af eksisterende bruger med firebase-metoden, signInWithEmailAndPassword, 
+    der tager mail-adresse og kodeord som argumenter. Asynkront eksekveres login i firebase.  
+    I catch sørger vi får at håntere fejl ved at sætte værdien for vores ovenstående state-variabel, errorMessage
     */
     const handleSubmit = async () => {
         try {
@@ -34,14 +31,14 @@ import firebase from "firebase/compat";
         }
     }
 
-    //Her defineres loginknappen, som aktiverer handleSubmit igennem onPress
+    //Her defineres loginknappen, som aktiverer handleSubmit med onPress
     const renderButton = () => {
         return <Button onPress={() => handleSubmit()} title="Login" />;
     };
 
-//I return oprettes en tekstkomponent, der angiver at dette er loginfrom
-//Dernæst er der to inputfelter, som løbeende sætter værdien af state-variablerne, mail og password.
-// Afslutningsvis, angives det at, hvis errorMessage får fastsat en værdi, skal denne udskrives i en tekstkomponent.
+//Under teksten 'Login', har vi to TextInputs, der ved ændring af værdien af konstanterne, email og password, 
+//sender den nye værdi som argument til call back funktionen, som sætter værdien i email og password.
+// Hvis errorMessage får fastsat en værdi, skal denne udskrives i en tekstkomponent.
     return (
         <View>
             <Text style={styles.header}>Login</Text>
@@ -66,7 +63,7 @@ import firebase from "firebase/compat";
     );
 }
 
-//Lokal styling til brug i LoginFrom
+//Styling til LoginFrom e.g. rød, hvis fejl
 const styles = StyleSheet.create({
     error: {
         color: 'red',

@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, Button} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
-//import firebase from 'firebase';
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
 import Mainpage from './components/MainPage'
@@ -21,16 +20,16 @@ const firebaseConfig = {
 
 export default function App() {
 
-    //Her oprettes bruger state variblen
+    //Opretter bruger state variablen
     const [user, setUser] = useState({ loggedIn: false });
 
-    //Koden sikrer at kun én Firebase initieres under brug af appen.
+    //Hvis vi ikke allerede har én Firebase, initieres et instans af Firebase appen ved brug af appen.
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
         }
 
-    //onAuthstatechanged er en prædefineret metode, forsynet af firebase, som konstant observerer brugerens status (logget ind vs logget ud)
-    //Pba. brugerens status foretages et callback i form af setUSer metoden, som håndterer user-state variablens status.
+    //Firebase-metoden, onAuthstatechanged, observerer hvorvidt brugeren er logget ind eller ud
+    //Pba. brugerens status foretages et callback med setUSer metoden, som håndterer user-state variablens status.
         function onAuthStateChange(callback) {
             return firebase.auth().onAuthStateChanged(user => {
             if (user) {
@@ -43,7 +42,8 @@ export default function App() {
         });
     }
 
-  //Heri aktiverer vi vores listener i form af onAuthStateChanged, så vi dynamisk observerer om brugeren er aktiv eller ej.
+  //Med useEffect-hooket begynder vi at lytte til ændringer i auth state
+  //På den måde kan vi se om brugeren er aktiv. 
   useEffect(() => {
     const unsubscribe = onAuthStateChange(setUser);
     return () => {
@@ -53,7 +53,8 @@ export default function App() {
 
 
 
-  
+  //Gæstesiden, der importerer View-komponenterne i hhv. LoginForm.js og SignupForm.js.
+  //Dette er altså den første side, brugeren præsenteres for. 
   const GuestPage = () => {
     return(
         <View style={styles.container}>

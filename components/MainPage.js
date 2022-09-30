@@ -3,52 +3,25 @@ import { StyleSheet, Text, View} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import HomeScreen from './navComponents/HomeScreen';
 import SettingsScreenComponent from './navComponents/SettingsScreen';
-import ProfileScreen from './ProfileScreen'
-//import MapComponent from './stackComponents/MapComponent'
-
+import ProfileScreen from './navComponents/ProfileScreen'
 import {findFocusedRoute, NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {createStackNavigator} from '@react-navigation/stack'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-
-
-
+//Simpel tab bar laves i bunden af skærmen, som lader brugeren skifte mellem forskellige routes
 const MainPage = () => {
     const Tab = createBottomTabNavigator();
-    //Her oprettes bruger state variblen
 
-    const [user, setUser] = useState({ loggedIn: false });
-
-    //onAuthstatechanged er en prædefineret metode, forsynet af firebase, som konstant observerer brugerens status (logget ind vs logget ud)
-    //Pba. brugerens status foretages et callback i form af setUSer metoden, som håndterer user-state variablens status.
-        function onAuthStateChange(callback) {
-            return firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                callback({loggedIn: true, user: user});
-            } else {
-                callback({loggedIn: false}
-
-                );
-            }
-        });
-    }
-
-  //Heri aktiverer vi vores listener i form af onAuthStateChanged, så vi dynamisk observerer om brugeren er aktiv eller ej.
-  useEffect(() => {
-    const unsubscribe = onAuthStateChange(setUser);
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
+    //Her oprettes bruger state variablen
+//Tab.Navigatoren i NavigationContaineren definerer vi først selve stylingen af de tre routes, Home, Profile og Settings
+//Hvorefter vi nederst definerer komponenterne, der skal renderes, når brugeren trykker på tabBarIcon'erne
     return (
       <View style={styles.container}>
         
         <NavigationContainer>
           <Tab.Navigator
           screenOptions={({ route }) => ({
-            tabBarActiveTintColor: "blue",
+            tabBarActiveTintColor: "black",
             tabBarInactiveTintColor: "gray",
             tabBarStyle: [{
               display: "flex"
@@ -61,7 +34,7 @@ const MainPage = () => {
                   return(
                     <Ionicons name={'home-outline'}
                     size={size}
-                    color={color}
+                    color={'lightblue'}
                     />
                   );
                 }
@@ -70,7 +43,7 @@ const MainPage = () => {
                   return(
                     <Ionicons name='md-person-outline'
                     size={size}
-                    color={color}
+                    color={'lightblue'}
                     />
                   );
                 }
@@ -79,7 +52,7 @@ const MainPage = () => {
                     <Ionicons
                       name={'md-settings-outline'}
                       size={size}
-                      color={color}
+                      color={'lightgrey'}
                   />
 
                   );
@@ -100,6 +73,7 @@ const MainPage = () => {
     );
     
 };
+//Eksport af MainPage, så den kan importeres og benyttes i andre komponenter
 export default MainPage;
 
 const styles = StyleSheet.create({
