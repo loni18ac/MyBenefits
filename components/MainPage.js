@@ -12,7 +12,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const MainPage = () => {
     const Tab = createBottomTabNavigator();
 
-    //Her oprettes bruger state variablen
+//Her oprettes bruger state variablen
 //Tab.Navigatoren i NavigationContaineren definerer vi først selve stylingen af de tre routes, Home, Profile og Settings
 //Hvorefter vi nederst definerer komponenterne, der skal renderes, når brugeren trykker på tabBarIcon'erne
     return (

@@ -1,6 +1,5 @@
 import React from "react";
 import {ScrollView, Image, StyleSheet, Text, View} from "react-native";
-import { BENEFITS} from "../../const";
 import Perkyhome from '../../assets/Perkyhome.png';
 
 //Billede af Hjem-siden importeres og bruges i View-komponenten

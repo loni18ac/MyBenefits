@@ -10,7 +10,7 @@ import firebase from "firebase/compat";
 
   function LoginForm() {
 
-    // Deklarerer ny state variable, som vi kalder email, password og errorMessage
+    // Deklarerer nye state variable, som vi kalder email, password og errorMessage
     //Vi bruge useState, som er et Hook, der lader os tilføje React state til funktionskomponenter.
     // vi kan dermed bevare værdierne imellem funktionernes kørsel
     const [email, setEmail] = useState('')

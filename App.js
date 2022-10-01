@@ -1,12 +1,13 @@
 
 //-------------------------------------- GK1
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
 import Mainpage from './components/MainPage'
+import { ScrollView } from 'react-native-gesture-handler';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -57,9 +58,13 @@ export default function App() {
   //Dette er altså den første side, brugeren præsenteres for. 
   const GuestPage = () => {
     return(
+      <ScrollView>
         <View style={styles.container}>
           <Text style={styles.header}>
-            Perky
+            Perky 
+          </Text>
+          <Text style={styles.header2}>
+            (denne prototype er ikke brugt ifm. brugerinddragelsens interviews)
           </Text>
 
     
@@ -71,9 +76,10 @@ export default function App() {
           
         </View>
 
+        </ScrollView>
     )
   }
-//hvis user er logget ind, returner main page, hvis ikke så 
+//hvis user er logget ind så returner main page, ellers så returner GuestPage
   return user.loggedIn ? <Mainpage/> : <GuestPage/> ;
 
 
@@ -84,7 +90,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      backgroundColor: '#D7E5F0',
+      backgroundColor: '#ffffff',
       salignItems: 'center',
       justifyContent: 'center',
   },
@@ -97,8 +103,18 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       textAlign: 'center',
       marginTop: 15
-  }
+  },
+  //styling til meddelelse om at denne MVP ikke er brugt til brugerinddragelsens interviews
+  header2: {
+    fontSize: 20,
+    fontFamily: "Cochin",
+    fontWeight: "bold",
+    textAlign: 'center',
+    marginTop: 15
+}
 });
+
+
 //---------------------------------------------------------------------
 /*import React, {useEffect, useState} from 'react';
 import { Text, View, StyleSheet } from 'react-native';

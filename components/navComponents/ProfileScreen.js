@@ -1,30 +1,32 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Image, Text, Button, StyleSheet} from 'react-native';
 //import firebase from 'firebase';
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
+import Perkyprofile from '../../assets/Perkyprofile.png';
+
+
+
 
 function ProfileScreen () {
 
-    //handleLogout håndterer log ud af en aktiv bruger.
-    //Metoden er en prædefineret metode, som firebase stiller tilrådighed
-    //Metoden er et asynkrontkald.
+    //Firebase-metoden, handleLogout, håndterer log ud af en bruger, der er logget ind. Asynkron funktion
     const handleLogOut = async () => {
         await firebase.auth().signOut();
     };
 
-    //Hvis der af en eller anden grund ikke skulle være muligt at fremfinde den aktive bruger,
-    //skal der udprintes en besked om dette igennem en tekstkomponent
+    //Hvis den aktive bruger ikke kan findes, fortæller vi det i et tekstkomponent
     if (!firebase.auth().currentUser) {
         return <View><Text>Not found</Text></View>;
     }
 
-    //I return() udnyttes en prædefineret metode, som firebase stiller til rådighed.
-    // Metoden returnerer mailadressen af den aktive bruger.
-    // Mailadressen udskrives ved brug af en tekstkomponent.
+    //I return() hentes billede af sketch til Profil-siden, 
+    //og vi stiller en knap til rådighed, der kan logge brugeren ud
     return (
         <View style={styles.container} >
-            <Text>Current user: {firebase.auth().currentUser.email}</Text>
+            <Image source={Perkyprofile} style={{ width: 350, height: 400 }} />
+
+            
             <Button onPress={() => handleLogOut()} title="Log out" />
         </View>
     );
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         paddingTop: '5%',
-        backgroundColor: '#ecf0f1',
+        backgroundColor: '#ffffff',
         padding: 8,
     },
 });
