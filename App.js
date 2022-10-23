@@ -61,7 +61,7 @@ export default function App() {
       <ScrollView>
         <View style={styles.container}>
           <Text style={styles.header}>
-            Perky 
+            MyBenefits 
           </Text>
           <Text style={styles.header2}>
             (denne prototype er ikke brugt ifm. brugerinddragelsens interviews)
@@ -98,17 +98,15 @@ const styles = StyleSheet.create({
     
   },
   header: {
-      fontSize: 50,
-      fontFamily: "Cochin",
-      fontWeight: "bold",
+      fontSize: 45,
+      fontFamily: "Arial",
       textAlign: 'center',
-      marginTop: 15
+      marginTop: 30
   },
   //styling til meddelelse om at denne MVP ikke er brugt til brugerinddragelsens interviews
   header2: {
     fontSize: 20,
-    fontFamily: "Cochin",
-    fontWeight: "bold",
+    fontFamily: "Arial",
     textAlign: 'center',
     marginTop: 15
 }

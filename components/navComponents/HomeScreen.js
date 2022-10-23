@@ -8,7 +8,7 @@ const HomeScreenComponent = () => {
 
     return(
         <View style={styles.container}>
-            <Image source={Perkyhome} style={{ width: 325, height: 520 }} />
+            <Image source={Perkyhome} style={{ width: 325, height: 570 }} />
         </View>
     )
 }

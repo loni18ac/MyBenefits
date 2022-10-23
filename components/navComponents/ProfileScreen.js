@@ -24,7 +24,7 @@ function ProfileScreen () {
     //og vi stiller en knap til rådighed, der kan logge brugeren ud
     return (
         <View style={styles.container} >
-            <Image source={Perkyprofile} style={{ width: 350, height: 400 }} />
+            <Image source={Perkyprofile} style={{ width: 300, height: 450 }} />
 
             
             <Button onPress={() => handleLogOut()} title="Log out" />

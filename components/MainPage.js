@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import HomeScreen from './navComponents/HomeScreen';
-import SettingsScreenComponent from './navComponents/SettingsScreen';
+import MapsScreenComponent from './navComponents/MapsScreen';
 import ProfileScreen from './navComponents/ProfileScreen'
 import {findFocusedRoute, NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
@@ -23,6 +23,7 @@ const MainPage = () => {
           screenOptions={({ route }) => ({
             tabBarActiveTintColor: "black",
             tabBarInactiveTintColor: "gray",
+            tabBarActiveBackgroundColor: '#e9f5f9',
             tabBarStyle: [{
               display: "flex"
             },
@@ -34,37 +35,38 @@ const MainPage = () => {
                   return(
                     <Ionicons name={'home-outline'}
                     size={size}
-                    color={'lightblue'}
+                    color={'#a8d5e5'}
                     />
                   );
                 }
-                
-                else if(route.name === 'Profile'){
-                  return(
-                    <Ionicons name='md-person-outline'
-                    size={size}
-                    color={'lightblue'}
-                    />
-                  );
-                }
-                else if(route.name === 'Settings'){
+                else if(route.name === 'Maps'){
                   return(
                     <Ionicons
-                      name={'md-settings-outline'}
+                      name={'md-map-outline'}
                       size={size}
-                      color={'lightgrey'}
+                      color={'#a8d5e5'}
                   />
 
                   );
                 }
+                else if(route.name === 'Profile'){
+                  return(
+                    <Ionicons name='md-person-outline'
+                    size={size}
+                    color={'#a8d5e5'}
+                    />
+                  );
+                }
+              
+                
               }
           })
           }
           
           > 
           <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Maps" component={MapsScreenComponent} />
           <Tab.Screen name="Profile" component={ProfileScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreenComponent} />
           </Tab.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
