@@ -6,7 +6,7 @@ import * as Location from 'expo-location';
 import {Accuracy} from "expo-location";
 import {useState, useEffect} from "react";
 
-
+//
 function App() {
 
   //Deklarerer nye state variable
