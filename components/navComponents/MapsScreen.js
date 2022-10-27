@@ -111,11 +111,10 @@ function App() {
   /*
   * Dernæst kaldes RenderCurrentLocation view
   * Mapview viser et Google Maps kort, hvor brugeren via showsUserLocation kan se egen lokation. 
-  * --------Herefter aktiveres metoden handleLongPress via onLongPress
   * I Mapview vises tre markører, der illustrerer lokationerne på brugerens fordele. 
   * Hver markør har en titel e.g. SATS Falkoner og en beskrivelse e.g. 'Fitnesscenter'
-  * ---------Derudover vil alle koordinatsæt i userMarkerCoordinates blive vist som markører på kortet.
-  * Ved hver af markørerne kan metoden handleSelectMarker blive aktiveret ved onPress,
+  * Alle koordinatsæt i userMarkerCoordinates ses som markører på kortet.
+  * Ved hver markør, kan brugeren aktivere metoden handleSelectMarker gennem onPress,
   * hvormed selectedCoordinate og selectedAddres får en værdi, og der printes data om den valgte markør
   * så brugeren kan få mere information om stedet, hvor han/hun har en frynsegode til. 
   */
@@ -168,7 +167,7 @@ function App() {
 }
 
 
-//----Lokal styling bruges i App.js
+//----Lokal styling til ovenstående SafeAreaView
 const styles = StyleSheet.create({
   container: {
     flex: 1,
